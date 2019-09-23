@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+
+  <nav class="nav-primary">
+    <a href="/">Home</a>
+
+    {{#if user}}
+    <a href="/create">Create Post</a>
+    <div class="user-actions">
+      <img class="user-avatar" src="{{user.profilePhoto}}" alt="{{user.username}} profile picture">
+      <a href="/{{user.id}}">{{user.username}}</a>
+      <a href="/auth/logout">Logout</a>
+    </div>
+
+    {{else}}
+    <div class="user-actions">
+      <a href="/auth/login">Login</a>
+      <a href="/auth/signup">Signup</a>
+    </div>
+    {{/if}}
+
+  </nav>
+
+  {{{body}}}
+
+  <script src="/javascripts/script.js"></script>
+</body>
+
+</html>

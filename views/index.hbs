@@ -1,0 +1,13 @@
+<div class="container">
+  <h1 class="title">Posts</h1>
+
+  <ul class="row">
+    {{#each posts}}
+    <li class="row__item">
+      <a href="/post/{{this._id}}">
+        <img src="{{this.picPath}}" alt="{{this.picName}}">
+      </a>
+    </li>
+    {{/each}}
+  </ul>
+</div>

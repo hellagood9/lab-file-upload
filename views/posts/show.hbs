@@ -1,0 +1,42 @@
+<div class="container">
+  {{#if post}}
+  <h1 class="title">{{post.picName}}</h1>
+  {{moment post.createdAt fromNow=true}}
+
+  {{#post.creatorId}}
+  <div class="user-info">
+    <img class="user-avatar" src="{{profilePhoto}}" alt="{{username}} profile picture">
+    <h4>by <a href="/{{_id}}">{{username}}</a></h4>
+  </div>
+  {{/post.creatorId}}
+
+  <div class="post-image">
+    <img src="{{post.picPath}}" alt="{{post.picName}}">
+  </div>
+  <p>{{post.content}}</p>
+  {{/if}}
+
+  <form class="form" action="/post/{{post._id}}/edit" method="post">
+    <textarea name="content" id="" cols="30" rows="2"></textarea>
+    <button type="submit">Comment</button>
+  </form>
+
+  <h3 class="title">Comments ({{post.comment.length}})</h3>
+
+  {{#if post.comment}}
+  <ul>
+    {{#each post.comment}}
+    <li>
+      <div class="user-info">
+        <img class="user-avatar" src="{{authorId.profilePhoto}}" alt="{{authorId.username}} profile picture">
+        <h4>by <a href="/{{authorId._id}}">{{authorId.username}}</a></h4>
+      </div>
+      <p>{{content}}</p>
+    </li>
+    {{/each}}
+  </ul>
+
+  {{else}}
+  <p>There are no comments for this entry</p>
+  {{/if}}
+</div>
